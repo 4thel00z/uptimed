@@ -1,4 +1,4 @@
-PROJECT_NAME := "uptimed"
+PROJECT_NAME := "github.com/4thel00z/uptimed"
 PKG := "$(PROJECT_NAME)"
 PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
 GO_FILES := $(shell find . -name '*.go' | grep -v /vendor/ | grep -v _test.go)
@@ -38,6 +38,9 @@ run: build
 
 clean: ## Remove previous build
 	@rm -f $(PROJECT_NAME)
+
+service:
+	@./create_service.sh
 
 help: ## Display this help screen
 	@grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
