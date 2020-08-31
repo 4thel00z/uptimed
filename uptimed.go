@@ -20,13 +20,14 @@ var (
 		os.Getenv("UPTIMED_URL"),
 		"Set the UPTIMED_URL env var or pass the url of the request that uptimed should do occasionally",
 	)
+	interval = flag.Int("interval", 30, "Set the polling interval")
 )
 
 func main() {
 
 	flag.Parse()
 
-	UptimeCounter := time.Duration(30)
+	sleepDuration := time.Duration(*interval)
 
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, syscall.SIGQUIT)
@@ -46,7 +47,7 @@ func main() {
 
 		if err != nil {
 			log.Println("Not reachable, sleeping...")
-			time.Sleep(UptimeCounter * time.Second)
+			time.Sleep(sleepDuration * time.Second)
 			panic("Bailing out")
 		}
 		log.Println("Reached mothership.")
@@ -55,11 +56,11 @@ func main() {
 
 		if err != nil {
 			log.Println("Not reachable, sleeping...")
-			time.Sleep(UptimeCounter * time.Second)
+			time.Sleep(sleepDuration * time.Second)
 			panic("Bailing out")
 		}
 
-		time.Sleep(UptimeCounter * time.Second)
+		time.Sleep(sleepDuration * time.Second)
 
 	}
 }
