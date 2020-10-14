@@ -33,6 +33,9 @@ build: dep ## Build the binary file
 build-win: dep ## Build the binary file
 	@env CGO_ENABLED=0 GOARCH=386 GOOS=windows go build ./...
 
+build-darwin: dep ## Build the binary file
+	@env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build ./...
+
 run: build
 	@uptimed $(ARGS)
 
