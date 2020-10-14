@@ -27,7 +27,7 @@ export INTERVAL=30
 ```
 
 There is an  `.env.example` you can copy over to .env.
-Also make sure to run the `service` make target:
+Also make sure to run the `service` make target (it will print the .service file for you on stdout):
 
 ```
 mv .env.example .env
