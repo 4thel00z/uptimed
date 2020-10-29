@@ -41,3 +41,7 @@ make service
 The url to be called can be configured using the `-url` flag or the `UPTIMED_URL` environment variable.
 The sleeping interval defaults to 30 seconds and can be set via the `-interval` flag.
 These are populated in the service file for you, as can be seen in the installation section
+
+## License
+
+This project is licensed under the GPL-3 license.
