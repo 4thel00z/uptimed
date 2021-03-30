@@ -36,6 +36,9 @@ build-win: dep ## Build the binary file
 build-darwin: dep ## Build the binary file
 	@env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build ./...
 
+build-raspi: dep ## Build the binary file
+	@env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=5 go build ./...
+
 run: build
 	@uptimed $(ARGS)
 
