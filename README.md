@@ -8,9 +8,7 @@ It calls a webserver under your control regularly and comes with a service templ
 You can also check out the repository and build it with a uptodate golang toolchain, like so:
 
 ```
-git clone git@github.com:4thel00z/uptimed.git
-cd uptimed
-make build
+go install github.com/4thel00z/uptimed@latest
 # This will create the service template for you
 env INTERVAL=30 USER=other_username URL=https://your.service make service > /tmp/uptimed.service
 ```
